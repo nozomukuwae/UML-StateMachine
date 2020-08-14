@@ -1,0 +1,16 @@
+@startuml
+
+state DisplayPage {
+  RoomList --> DeviceList : select room /\n display device list
+  DeviceList --> RoomList : back /\n display room list
+  DeviceList --> OnOffDeviceInfo : select device \n[device Class==OnOffDevice]\n / display device data
+  OnOffDeviceInfo --> DeviceList : back /\n display device list
+  DeviceList --> OpenClosedDeviceInfo : select device \n[device Class==OpenClosedDevice]\n / display device data
+  OpenClosedDeviceInfo --> DeviceList : back /\n display device list
+}
+
+[*] --> RoomList : enter page /\n display room list
+
+DisplayPage --> [*] : leave page
+
+@enduml
